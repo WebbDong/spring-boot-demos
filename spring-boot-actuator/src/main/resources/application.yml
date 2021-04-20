@@ -1,0 +1,26 @@
+server:
+  port: 8080
+management:
+  server:
+    # 指定监控的端口
+    port: 35444
+    ssl:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        # 指定开放哪些指标 url
+#        include: "health,info,beans"
+        # 通配符，暴露所有指标 url
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"
+info:
+  # 指定应用信息
+  app:
+    # 从 pom.xml 中获取
+    name: "@project.version@"
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@spring-boot.version@"

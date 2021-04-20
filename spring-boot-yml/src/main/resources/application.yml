@@ -1,0 +1,54 @@
+server:
+  port: 20000
+  tomcat:
+    uri-encoding: UTF-8
+
+# 对象
+person:
+  name: Ferrari
+  age: 30
+  languages:
+    - English
+    - Korean
+    - Mandarin
+    - Japanese
+  mapData:
+    key1: value1
+    key2: value2
+
+# 行内对象
+student: {name: Lam, age: 40}
+
+# 集合，数组
+cities:
+  - BeiJing
+  - TianJing
+  - ChongQing
+  - ShangHai
+
+# 行集合，数组
+weeks: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+
+# 使用 SpringEL 获取数组数据
+weeks2: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+
+# 对象集合，数组
+persons:
+  - name: Ferrari
+    age: 30
+  - name: Lam
+    age: 41
+  - name: Bugatti
+    age: 50
+
+# 行对象集合，数组
+students: [{name: name1, age: 33}, {name: name2, age: 44}, {name: name3, age: 50}]
+
+# Map
+maps:
+  key1: value1
+  key2: value2
+
+maps2: "{key1: 'value1', key2: 'value2', key3: 'value3'}"
+
+

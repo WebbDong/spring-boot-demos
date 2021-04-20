@@ -1,0 +1,12 @@
+mybatis:
+  type-aliases-package: com.webbdong.springboot.transaction.entity
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:33010/my_test?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8
+    username: root
+    password: 123456

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aspectj>
+    <!--
+        要织入切面的目标类
+        options="-Xreweavable -Xlint:ignore -Xset:weaveJavaPackages=true,weaveJavaxPackages=true -verbose -showWeaveInfo -debug"
+    -->
+    <weaver options="-Xreweavable -Xlint:ignore -Xset:weaveJavaPackages=true,weaveJavaxPackages=true">
+        <include within="com.webbdong.springboot.aop.ctw..*"/>
+    </weaver>
+    <!-- 切面类 -->
+    <aspects>
+        <aspect name="com.webbdong.springboot.aop.ctw.aspect.AspectDemo"/>
+    </aspects>
+</aspectj>

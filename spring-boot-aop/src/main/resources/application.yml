@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://localhost:33010/my_test?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8
+    username: root
+    password: 123456
+
+mybatis-plus:
+  mapper-locations: classpath*:com/spring/boot/aop/demo/dao/mapper/xml/**/*.xml
+  # 类型处理器所在的包
+  type-handlers-package: com.webbdong.springboot.aop.mybatisplus
+  # 实体包扫描，多个package用逗号或者分号分隔，通过该属性可以给包中的类注册别名，注册后在 Mapper 对应的 XML 文件中可以直接使用类名，而不用使用全限定的类名(即 XML 中调用的时候不用包含包名)
+  type-aliases-package: com.webbdong.springboot.aop.model.domain
+  global-config:
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #逻辑删除配置
+    logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+    logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+#  configuration:
+    # 打印SQL语句
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
