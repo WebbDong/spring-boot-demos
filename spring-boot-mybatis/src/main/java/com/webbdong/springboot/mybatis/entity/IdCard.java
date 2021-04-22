@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 public class IdCard {
 
-    private String id;
+    private Long id;
 
     private Long userId;
 
