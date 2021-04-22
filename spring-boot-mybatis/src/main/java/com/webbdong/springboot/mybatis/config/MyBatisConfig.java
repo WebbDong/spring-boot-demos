@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * MyBatis配置
  * @author: Webb Dong
- * @date 2021-03-07 11:45 PM
+ * @date 2018-03-25 11:45 PM
  */
 @Configuration
 @MapperScan("com.webbdong.springboot.mybatis.mapper")

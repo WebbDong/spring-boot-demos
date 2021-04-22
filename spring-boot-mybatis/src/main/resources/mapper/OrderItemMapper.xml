@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webbdong.springboot.mybatis.mapper.OrderItemMapper">
+
+    <resultMap id="orderItemCascade" type="com.webbdong.springboot.mybatis.entity.OrderItem">
+        <result property="orderId" column="order_id"></result>
+        <!-- 多对一级联查询 -->
+        <association property="order"
+                     column="order_id"
+                     fetchType="lazy"
+                     javaType="com.webbdong.springboot.mybatis.entity.Order"
+                     select="com.webbdong.springboot.mybatis.mapper.OrderMapper.selectById"/>
+    </resultMap>
+
+    <select id="selectCascadeById" resultMap="orderItemCascade">
+        SELECT *
+        FROM t_order_item
+        WHERE id = #{0}
+    </select>
+
+</mapper>

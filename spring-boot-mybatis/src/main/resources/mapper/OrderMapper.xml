@@ -2,6 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.webbdong.springboot.mybatis.mapper.OrderMapper">
 
+    <!-- 实体类的属性名与字段名匹配的可以不用配置 -->
+    <resultMap id="orderCascade" type="com.webbdong.springboot.mybatis.entity.Order">
+        <id property="id" column="id"></id>
+        <!-- 一对多级联查询 -->
+        <collection property="orderItemList"
+                    column="id"
+                    fetchType="lazy"
+                    javaType="java.util.ArrayList"
+                    ofType="com.webbdong.springboot.mybatis.entity.OrderItem"
+                    select="com.webbdong.springboot.mybatis.mapper.OrderItemMapper.selectByOrderId"/>
+    </resultMap>
+
     <select id="selectLikeOrderNo2" resultType="com.webbdong.springboot.mybatis.entity.Order">
         SELECT *
         FROM t_order
@@ -14,5 +26,61 @@
         FROM t_order
         WHERE order_no LIKE #{fuzzy}
     </select>
+
+    <!-- 级联查询 -->
+    <select id="selectOrderCascade" resultMap="orderCascade">
+        SELECT *
+        FROM t_order
+        LIMIT 20
+    </select>
+    
+    <insert id="insertReturnPK" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `order`.`t_order`(
+            `user_id`, `coupon_id`, `order_no`, `total_amount`, `pay_amount`,
+            `freight_amount`, `promotion_amount`, `integration_amount`,
+            `coupon_amount`, `pay_type`, `source_type`, `status`,
+            `order_type`, `delivery_company`, `delivery_no`,
+            `auto_confirm_day`, `receiver_name`, `receiver_phone`,
+            `receiver_post_code`, `receiver_province`, `receiver_city`,
+            `receiver_region`, `receiver_detail_address`, `remark`,
+            `confirm_status`, `payment_time`, `delivery_time`, `receive_time`,
+            `comment_time`, `created_time`, `updated_time`, `del_status`)
+        VALUES(#{order.userId}, #{order.couponId}, #{order.orderNo}, #{order.totalAmount},
+               #{order.payAmount}, #{order.freightAmount}, #{order.promotionAmount},
+               #{order.integrationAmount}, #{order.couponAmount}, #{order.payType},
+               #{order.sourceType}, #{order.status}, #{order.orderType}, #{order.deliveryCompany},
+               #{order.deliveryNo}, #{order.autoConfirmDay}, #{order.receiverName},
+               #{order.receiverPhone}, #{order.receiverPostCode}, #{order.receiverProvince},
+               #{order.receiverCity}, #{order.receiverRegion}, #{order.receiverDetailAddress},
+               #{order.remark}, #{order.confirmStatus}, #{order.paymentTime}, #{order.deliveryTime},
+               #{order.receiveTime}, #{order.commentTime}, #{order.createdTime},
+               #{order.updatedTime}, #{order.delStatus})
+    </insert>
+
+    <insert id="batchInsertReturnPK" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `order`.`t_order`(
+            `user_id`, `coupon_id`, `order_no`, `total_amount`, `pay_amount`,
+            `freight_amount`, `promotion_amount`, `integration_amount`,
+            `coupon_amount`, `pay_type`, `source_type`, `status`,
+            `order_type`, `delivery_company`, `delivery_no`,
+            `auto_confirm_day`, `receiver_name`, `receiver_phone`,
+            `receiver_post_code`, `receiver_province`, `receiver_city`,
+            `receiver_region`, `receiver_detail_address`, `remark`,
+            `confirm_status`, `payment_time`, `delivery_time`, `receive_time`,
+            `comment_time`, `created_time`, `updated_time`, `del_status`)
+        VALUES
+        <foreach collection="orderList" item="order" separator=",">
+            (#{order.userId}, #{order.couponId}, #{order.orderNo}, #{order.totalAmount},
+             #{order.payAmount}, #{order.freightAmount}, #{order.promotionAmount},
+             #{order.integrationAmount}, #{order.couponAmount}, #{order.payType},
+             #{order.sourceType}, #{order.status}, #{order.orderType}, #{order.deliveryCompany},
+             #{order.deliveryNo}, #{order.autoConfirmDay}, #{order.receiverName},
+             #{order.receiverPhone}, #{order.receiverPostCode}, #{order.receiverProvince},
+             #{order.receiverCity}, #{order.receiverRegion}, #{order.receiverDetailAddress},
+             #{order.remark}, #{order.confirmStatus}, #{order.paymentTime}, #{order.deliveryTime},
+             #{order.receiveTime}, #{order.commentTime}, #{order.createdTime},
+             #{order.updatedTime}, #{order.delStatus})
+        </foreach>
+    </insert>
 
 </mapper>

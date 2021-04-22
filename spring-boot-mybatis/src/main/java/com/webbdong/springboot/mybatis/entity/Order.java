@@ -1,15 +1,18 @@
 package com.webbdong.springboot.mybatis.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Webb Dong
- * @date 2021-03-13 2:42 PM
+ * @date 2018-03-25 2:42 PM
  */
-@Data
+@Getter
+@Setter
 public class Order {
 
     /**
@@ -181,5 +184,7 @@ public class Order {
      * 删除状态：0->未删除；1->已删除
      */
     private Integer delStatus;
+
+    private List<OrderItem> orderItemList;
 
 }
