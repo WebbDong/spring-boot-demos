@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      # 开启后，避免级联懒加载 no session 问题
+      hibernate.enable_lazy_load_no_trans: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:33010/order?rewriteBatchedStatements=true&max_allowed_packet=10M&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    # 当地时区
+    locale: zh
+    # 设置全局时区
+    time-zone: GMT+8
+    # 忽略空属性，不进行序列化
+    default-property-inclusion: NON_NULL
+    serialization:
+      # 解决 jackson 序列化 hibernate 对象时的 HibernateProxy 问题
+      fail-on-empty-beans: false
