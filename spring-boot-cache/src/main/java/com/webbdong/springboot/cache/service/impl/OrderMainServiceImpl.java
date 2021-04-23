@@ -45,7 +45,8 @@ public class OrderMainServiceImpl extends BaseServiceImpl<OrderMainMapper, Order
         super.save(orderMainDo);
     }
 
-    @Cacheable(key = "#orderMainDto.id")
+    // @Cacheable 不支持设置超时时间，只能通过自定义缓存管理器配置并配合 cacheNames 来设置
+    @Cacheable(cacheNames = "orderInfo", key = "#orderMainDto.id")
     @Override
     public List<OrderMainDto> getOrder(OrderMainDto orderMainDto) {
         QueryWrapper<OrderMainDo> queryWrapper = new QueryWrapper<>();
@@ -54,7 +55,7 @@ public class OrderMainServiceImpl extends BaseServiceImpl<OrderMainMapper, Order
         return OrderMainModelMapper.INSTANCE.doListToDtoList(orderMainDoList);
     }
 
-    @CacheEvict(key = "#orderMainDto.id")
+    @CacheEvict(cacheNames = "orderInfo", key = "#orderMainDto.id")
     @Override
     public void updateOrder(OrderMainDto orderMainDto) {
         OrderMainDo orderMainDo = OrderMainModelMapper.INSTANCE.dtoToDo(orderMainDto);
