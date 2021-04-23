@@ -3,6 +3,11 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
+# 字符串
+# 1、字符串默认不需要引号，如果字符串包含空格或者特殊字符(例如冒号)，需要加引号
+# 2、双引号不会对串中转义字符进行转义，单引号会对串中转移字符进行转义
+str: "Hello World"
+
 # 对象
 person:
   name: Ferrari
