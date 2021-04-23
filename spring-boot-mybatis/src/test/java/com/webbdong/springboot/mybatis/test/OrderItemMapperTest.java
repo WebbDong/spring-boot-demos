@@ -1,6 +1,6 @@
 package com.webbdong.springboot.mybatis.test;
 
-import com.webbdong.springboot.mybatis.entity.OrderItem;
+import com.webbdong.springboot.mybatis.entity.onetomany.OrderItem;
 import com.webbdong.springboot.mybatis.mapper.OrderItemMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

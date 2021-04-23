@@ -1,6 +1,6 @@
 package com.webbdong.springboot.mybatis.mapper;
 
-import com.webbdong.springboot.mybatis.entity.User;
+import com.webbdong.springboot.mybatis.entity.onetoone.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;

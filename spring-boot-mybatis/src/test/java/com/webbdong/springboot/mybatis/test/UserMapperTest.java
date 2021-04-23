@@ -1,6 +1,6 @@
 package com.webbdong.springboot.mybatis.test;
 
-import com.webbdong.springboot.mybatis.entity.User;
+import com.webbdong.springboot.mybatis.entity.onetoone.User;
 import com.webbdong.springboot.mybatis.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

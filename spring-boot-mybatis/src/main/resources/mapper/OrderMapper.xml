@@ -3,24 +3,24 @@
 <mapper namespace="com.webbdong.springboot.mybatis.mapper.OrderMapper">
 
     <!-- 实体类的属性名与字段名匹配的可以不用配置 -->
-    <resultMap id="orderCascade" type="com.webbdong.springboot.mybatis.entity.Order">
+    <resultMap id="orderCascade" type="com.webbdong.springboot.mybatis.entity.onetomany.Order">
         <id property="id" column="id"></id>
         <!-- 一对多级联查询 -->
         <collection property="orderItemList"
                     column="id"
                     fetchType="lazy"
                     javaType="java.util.ArrayList"
-                    ofType="com.webbdong.springboot.mybatis.entity.OrderItem"
+                    ofType="com.webbdong.springboot.mybatis.entity.onetomany.OrderItem"
                     select="com.webbdong.springboot.mybatis.mapper.OrderItemMapper.selectByOrderId"/>
     </resultMap>
 
-    <select id="selectLikeOrderNo2" resultType="com.webbdong.springboot.mybatis.entity.Order">
+    <select id="selectLikeOrderNo2" resultType="com.webbdong.springboot.mybatis.entity.onetomany.Order">
         SELECT *
         FROM t_order
         WHERE order_no LIKE concat(concat('%', #{orderNo}),'%')
     </select>
 
-    <select id="selectLikeOrderNo3" resultType="com.webbdong.springboot.mybatis.entity.Order">
+    <select id="selectLikeOrderNo3" resultType="com.webbdong.springboot.mybatis.entity.onetomany.Order">
         <bind name="fuzzy" value="'%' + orderNo + '%'" />
         SELECT *
         FROM t_order

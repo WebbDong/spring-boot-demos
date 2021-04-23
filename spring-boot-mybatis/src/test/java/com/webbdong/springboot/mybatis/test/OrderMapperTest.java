@@ -1,6 +1,6 @@
 package com.webbdong.springboot.mybatis.test;
 
-import com.webbdong.springboot.mybatis.entity.Order;
+import com.webbdong.springboot.mybatis.entity.onetomany.Order;
 import com.webbdong.springboot.mybatis.mapper.OrderMapper;
 import com.webbdong.springboot.mybatis.utils.SnowFlake;
 import lombok.SneakyThrows;

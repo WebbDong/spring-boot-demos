@@ -1,6 +1,6 @@
 package com.webbdong.springboot.mybatis.mapper;
 
-import com.webbdong.springboot.mybatis.entity.Order;
+import com.webbdong.springboot.mybatis.entity.onetomany.Order;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

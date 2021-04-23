@@ -1,6 +1,6 @@
 package com.webbdong.springboot.mybatis.test;
 
-import com.webbdong.springboot.mybatis.entity.IdCard;
+import com.webbdong.springboot.mybatis.entity.onetoone.IdCard;
 import com.webbdong.springboot.mybatis.mapper.IdCardMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webbdong.springboot.mybatis.mapper.VehicleMapper">
+
+    <resultMap id="vehicleCascade" type="com.webbdong.springboot.mybatis.entity.discriminator.Vehicle">
+        <result property="ownerId" column="owner_id"></result>
+        <!-- 根据 owner_type 字段的值动态级联映射 -->
+        <discriminator javaType="String" column="owner_type">
+            <case value="pu">
+                <association fetchType="lazy"
+                             property="owner"
+                             column="owner_id"
+                             javaType="com.webbdong.springboot.mybatis.entity.discriminator.PersonalUser"
+                             select="com.webbdong.springboot.mybatis.mapper.PersonalUserMapper.selectById"/>
+            </case>
+            <case value="cu">
+                <association fetchType="lazy"
+                             property="owner"
+                             column="owner_id"
+                             javaType="com.webbdong.springboot.mybatis.entity.discriminator.CorporateUser"
+                             select="com.webbdong.springboot.mybatis.mapper.CorporateUserMapper.selectById"/>
+            </case>
+        </discriminator>
+    </resultMap>
+
+    <select id="selectCascadeAll" resultMap="vehicleCascade">
+        SELECT * FROM t_vehicle
+    </select>
+
+</mapper>

@@ -1,4 +1,4 @@
-package com.webbdong.springboot.mybatis.entity;
+package com.webbdong.springboot.mybatis.entity.onetomany;
 
 import lombok.Getter;
 import lombok.Setter;
