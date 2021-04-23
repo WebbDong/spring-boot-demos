@@ -24,34 +24,30 @@ public interface VehicleMapper {
 
     @Select("SELECT * FROM t_vehicle")
     @TypeDiscriminator(
-            column = "owner_type",
-            javaType = String.class,
-            cases = {
-                    @Case(
-                            value = "pu",
-                            type = Vehicle.class,
-                            results = {
-                                    @Result(property = "ownerId", column = "owner_id"),
-                                    @Result(property = "owner",
-                                               column = "owner_id",
-                                               javaType = PersonalUser.class,
-                                               one = @One(fetchType = FetchType.LAZY,
-                                                          select = "com.webbdong.springboot.mybatis.mapper.PersonalUserMapper.selectById"))
-                            }
-                    ),
-                    @Case(
-                            value = "cu",
-                            type = Vehicle.class,
-                            results = {
-                                    @Result(property = "ownerId", column = "owner_id"),
-                                    @Result(property = "owner",
-                                               column = "owner_id",
-                                               javaType = CorporateUser.class,
-                                               one = @One(fetchType = FetchType.LAZY,
-                                                         select = "com.webbdong.springboot.mybatis.mapper.CorporateUserMapper.selectById"))
-                            }
-                    )
-            }
+        column = "owner_type",
+        javaType = String.class,
+        cases = {
+            @Case(value = "pu", type = Vehicle.class,
+                    results = {
+                        @Result(property = "ownerId", column = "owner_id"),
+                        @Result(property = "owner",
+                                column = "owner_id",
+                                javaType = PersonalUser.class,
+                                one = @One(fetchType = FetchType.LAZY,
+                                           select = "com.webbdong.springboot.mybatis.mapper.PersonalUserMapper.selectById"))
+                    }
+            ),
+            @Case(value = "cu", type = Vehicle.class,
+                    results = {
+                        @Result(property = "ownerId", column = "owner_id"),
+                        @Result(property = "owner",
+                                column = "owner_id",
+                                javaType = CorporateUser.class,
+                                one = @One(fetchType = FetchType.LAZY,
+                                           select = "com.webbdong.springboot.mybatis.mapper.CorporateUserMapper.selectById"))
+                    }
+            )
+        }
     )
     List<Vehicle> selectCascadeAllByAnnotation();
 
