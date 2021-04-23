@@ -20,7 +20,7 @@
         <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
         <aspectj-maven-plugin.version>1.12.6</aspectj-maven-plugin.version>
 
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>1.18.20</lombok.version>
         <spring-boot.version>2.4.4</spring-boot.version>
         <spring-instrument.version>5.3.5</spring-instrument.version>
         <aspectj.version>1.9.6</aspectj.version>
@@ -35,6 +35,8 @@
         <spring-boot-thin-layout.version>1.0.26.RELEASE</spring-boot-thin-layout.version>
         <mysql-connector-java.version>8.0.23</mysql-connector-java.version>
         <org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
+        <guava.version>30.1-jre</guava.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
     </properties>
 
     <modules>
@@ -49,6 +51,9 @@
         <module>spring-boot-yml</module>
         <module>spring-boot-transaction</module>
         <module>spring-boot-cache</module>
+        <module>spring-boot-jpa</module>
+        <module>spring-boot-mvc</module>
+        <module>spring-boot-websocket</module>
     </modules>
 
     <dependencies>
@@ -162,6 +167,16 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${org.mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
