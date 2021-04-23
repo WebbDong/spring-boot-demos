@@ -1,7 +1,5 @@
 package com.webbdong.springboot.mvc.enums;
 
-import java.io.Serializable;
-
 /**
  * 枚举 JSON 序列化显示器
  * @author Webb Dong

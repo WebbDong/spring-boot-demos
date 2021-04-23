@@ -22,6 +22,7 @@ public class JacksonConfig {
     @ConditionalOnMissingBean(ObjectMapper.class)
     public ObjectMapper objectMapper(Jackson2ObjectMapperBuilder builder) {
         ObjectMapper objectMapper = builder.build();
+        // 注册枚举类型通用序列化器
         SimpleModule enumHandlerModule = new SimpleModule();
         enumHandlerModule.addSerializer(EnumJsonSerializableDisplay.class, enumTypeJsonSerializer());
         objectMapper.registerModule(enumHandlerModule);
