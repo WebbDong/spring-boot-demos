@@ -1,0 +1,13 @@
+server:
+  port: 20000
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    password: LocalRedis
+    lettuce:
+      pool:
+        max-active: 5
+        max-idle: 5
+        max-wait: 2000
