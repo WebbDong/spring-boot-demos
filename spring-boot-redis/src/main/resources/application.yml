@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    password: LocalRedis
+    lettuce:
+      pool:
+        max-active: 5
+        max-idle: 5
+        max-wait: 2000
+
+# jedis配置
+jedis:
+  host: localhost
+  port: 6379
+  password: LocalRedis
+  max-total: 5
+  max-idle: 5
+  test-on-borrow: true
+  time-out: 2000
+
