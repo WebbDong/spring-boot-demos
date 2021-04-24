@@ -1,0 +1,15 @@
+server:
+  port: 20000
+spring:
+  freemarker:
+    template-loader-path: classpath:/page
+    allow-request-override: false
+    cache: false
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
+  mvc:
+    static-path-pattern: /**
