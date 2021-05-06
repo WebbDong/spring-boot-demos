@@ -45,7 +45,7 @@ public class Vehicle {
 
     /**
      * owner 可以是 PersonalUser 也可以是 CorporateUser
-     * 类似于 mybatis 的
+     * 类似于 mybatis 的 discriminator 标签
      */
     @Any(metaColumn = @Column(name = "ownerType"), fetch = FetchType.LAZY)
     @AnyMetaDef(
