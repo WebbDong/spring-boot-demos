@@ -69,7 +69,7 @@ public class JwtUtils {
     }
 
     /**
-     * 公钥解析 Token，并且返回指定属性名的数据
+     * 公钥解析 Token，并且返回指定属性名的 JSON 数据，解析成对应的模型封装成 Payload
      * @param propertyName 载荷数据的属性名
      * @param token 需要解析的 Token
      * @param publicKey 公钥
