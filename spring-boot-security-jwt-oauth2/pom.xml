@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <description>Spring Boot Security JWT 认证与授权</description>
 
-    <artifactId>spring-boot-jwt-security</artifactId>
+    <artifactId>spring-boot-security-jwt-oauth2</artifactId>
 
     <dependencies>
         <dependency>
