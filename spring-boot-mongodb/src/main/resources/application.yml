@@ -1,0 +1,16 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: spring-boot-mongodb
+  data:
+    mongodb:
+      uri: mongodb://admin:123456@192.168.56.101:27017/taobao
+#      host: 192.168.56.101
+#      port: 27017
+#      username: admin
+      # 密码必须用单引号，否则会报错
+#      password: '123456'
+#      database: taobao
+logging:
+  config: classpath:logback.xml
