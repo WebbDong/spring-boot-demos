@@ -1,18 +1,29 @@
 package com.webbdong.mongodb.test;
 
+import com.google.gson.Gson;
 import com.mongodb.client.result.UpdateResult;
+import com.webbdong.mongodb.model.MapReduceResult;
 import com.webbdong.mongodb.model.Product;
+import com.webbdong.mongodb.model.ZipAggregate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.mapreduce.MapReduceOptions;
+import org.springframework.data.mongodb.core.mapreduce.MapReduceResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -135,6 +146,66 @@ public class MongoTemplateTest {
         List<Product> products = mongoTemplate.find(query.skip(offset).limit(size), Product.class);
         System.out.println(totalCount);
         System.out.println(products);
+    }
+
+    @Test
+    public void testAggregate() {
+        Aggregation aggregation = Aggregation.newAggregation(
+                // {$match: {state: {$in: ['MA', 'NH', 'ME']}}}
+                Aggregation.match(Criteria.where("state").in("MA", "NH", "ME")),
+                // {$group: {_id: "$state", count: {$sum: 1}}}
+                Aggregation.group("state").count().as("count"),
+                // {$sort: {state: 1}}
+                Aggregation.sort(Sort.by(Sort.Direction.ASC, "state")),
+                // {$project: {state: "$_id", count: true, _id: false}}
+                Aggregation.project("count").and("_id").as("state").andExclude("_id")
+        );
+        AggregationResults<ZipAggregate> aggregationResults = mongoTemplate.aggregate(
+                aggregation, "zips", ZipAggregate.class);
+        System.out.println(new Gson().toJson(aggregationResults.getMappedResults()));
+    }
+
+    @Test
+    public void testMapReduce() {
+        Query query = new Query(Criteria.where("state").in("MA", "IN", "DE"));
+        Map<String, Object> scopeVariables = new HashMap<>();
+        scopeVariables.put("custom_var", "val = ");
+        String finalizeFunction =
+                "function(key, value) {\n" +
+                "    return custom_var + value.count;\n" +
+                "}";
+        String mapFunction =
+                "function() {\n" +
+                "    emit(this.state, {count: 1})\n" +
+                "}";
+        String reduceFunction =
+                "function(key, values) {\n" +
+                "    var totalCount = 0\n" +
+                "    values.forEach(function(obj) {\n" +
+                "        totalCount += obj.count\n" +
+                "    })\n" +
+                "    return {count: totalCount}\n" +
+                "}";
+        MapReduceOptions mapReduceOptions = new MapReduceOptions();
+        mapReduceOptions.outputCollection("mapReduceResult")
+                .scopeVariables(scopeVariables)
+                .limit(9000)
+                .javaScriptMode(true)
+                .verbose(true)
+                .finalizeFunction(finalizeFunction);
+
+        MapReduceResults<MapReduceResult> results = mongoTemplate.mapReduce(
+                query,
+                "zips",
+                mapFunction,
+                reduceFunction,
+                mapReduceOptions,
+                MapReduceResult.class);
+        Iterator<MapReduceResult> iterator = results.iterator();
+        while (iterator.hasNext()) {
+            MapReduceResult result = iterator.next();
+            System.out.println(result);
+        }
     }
 
 }
