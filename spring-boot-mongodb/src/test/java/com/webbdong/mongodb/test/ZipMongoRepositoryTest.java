@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 
-import java.util.List;
-
 /**
  * @author: Webb Dong
  * @date: 2021-11-22 5:49 PM

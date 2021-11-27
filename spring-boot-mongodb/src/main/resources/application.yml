@@ -5,7 +5,9 @@ spring:
     name: spring-boot-mongodb
   data:
     mongodb:
-      uri: mongodb://admin:123456@192.168.56.101:27017/taobao
+#      uri: mongodb://admin:123456@192.168.56.101:27017/taobao
+      # 集群
+      uri: mongodb://admin:123456@192.168.56.101:30001,192.168.56.101:30002,192.168.56.101:30003/taobao
 #      host: 192.168.56.101
 #      port: 27017
 #      username: admin
