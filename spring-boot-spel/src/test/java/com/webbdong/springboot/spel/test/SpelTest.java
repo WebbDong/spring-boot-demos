@@ -54,7 +54,7 @@ public class SpelTest implements ApplicationContextAware {
     @SneakyThrows
     @Test
     public void test2() {
-        String expressionString = "#person.name + '的年龄是:' + #person.age";
+        String expressionString = "#person.name + '的年龄是:' + #person.age + '*'";
         SpelExpressionParser parser = new SpelExpressionParser();
         DefaultParameterNameDiscoverer nameDiscoverer = new DefaultParameterNameDiscoverer();
         Method method = this.getClass().getDeclaredMethod("testMethod", Person.class);
