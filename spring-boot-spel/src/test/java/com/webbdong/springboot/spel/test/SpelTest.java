@@ -55,6 +55,7 @@ public class SpelTest implements ApplicationContextAware {
     @Test
     public void test2() {
         String expressionString = "#person.name + '的年龄是:' + #person.age + '*'";
+//        String expressionString = "'skc:productName:' + #skcCode";
         SpelExpressionParser parser = new SpelExpressionParser();
         DefaultParameterNameDiscoverer nameDiscoverer = new DefaultParameterNameDiscoverer();
         Method method = this.getClass().getDeclaredMethod("testMethod", Person.class);
@@ -68,13 +69,16 @@ public class SpelTest implements ApplicationContextAware {
                         .age(40)
                         .build()
         };
+/*        Object[] args = new Object[] {
+                "skcCode123456"
+        };*/
         for (int i = 0; i < args.length; i++) {
             context.setVariable(paramNames[i], args[i]);
         }
         System.out.println(expression.getValue(context).toString());
     }
 
-    private void testMethod(Person person) {
+    private void testMethod(Person person /*String skcCode*/) {
     }
 
     @Override
