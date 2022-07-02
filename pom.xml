@@ -67,6 +67,8 @@
         <module>spring-boot-security-jwt-oauth2</module>
         <module>spring-boot-es</module>
         <module>spring-boot-mongodb</module>
+        <module>spring-boot-dynamic-scheduling</module>
+        <module>spring-boot-spel</module>
     </modules>
 
     <dependencies>
