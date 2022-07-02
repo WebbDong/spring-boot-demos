@@ -1,0 +1,14 @@
+spring:
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: 123456
+    pool:
+      max-connection-pool-size: 200
+      connection-acquisition-timeout: 60
+    connection-timeout: 30
+  application:
+    name: spring-boot-neo4j
+logging:
+  config: classpath:logback-spring.xml
