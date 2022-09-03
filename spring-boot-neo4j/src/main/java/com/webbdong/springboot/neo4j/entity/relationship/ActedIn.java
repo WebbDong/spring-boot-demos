@@ -1,10 +1,10 @@
 package com.webbdong.springboot.neo4j.entity.relationship;
 
 import com.webbdong.springboot.neo4j.entity.Movie;
-import com.webbdong.springboot.neo4j.entity.Person;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
@@ -21,6 +21,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @SuperBuilder
+@ToString
 @RelationshipProperties
 public class ActedIn {
 
@@ -37,3 +38,4 @@ public class ActedIn {
     private List<String> roles;
 
 }
+

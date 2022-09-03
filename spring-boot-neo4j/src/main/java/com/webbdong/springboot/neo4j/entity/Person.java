@@ -4,6 +4,7 @@ import com.webbdong.springboot.neo4j.entity.relationship.ActedIn;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
@@ -20,6 +21,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @SuperBuilder
+@ToString
 @Node("Person")
 public class Person {
 

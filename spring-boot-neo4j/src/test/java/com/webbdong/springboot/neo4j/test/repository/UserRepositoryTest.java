@@ -48,7 +48,7 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindById(@Autowired UserRepository userRepository) {
-        User webbDong = userRepository.findById(366L).get();
+        User webbDong = userRepository.findById(0L).get();
         System.out.println(webbDong);
     }
 

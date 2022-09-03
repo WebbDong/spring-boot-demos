@@ -1,6 +1,8 @@
 spring:
   neo4j:
-    uri: bolt://localhost:7687
+    # bolt 协议只能用于单机，neo4j 协议可以访问集群
+#    uri: bolt://localhost:7687
+    uri: neo4j://localhost:17687
     authentication:
       username: neo4j
       password: 123456
