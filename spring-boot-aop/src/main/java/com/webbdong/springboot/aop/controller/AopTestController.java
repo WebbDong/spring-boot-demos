@@ -1,5 +1,6 @@
 package com.webbdong.springboot.aop.controller;
 
+import com.webbdong.springboot.aop.annotation.MyAnnotation;
 import com.webbdong.springboot.aop.model.request.TestRequest;
 import com.webbdong.springboot.aop.service.AspectDemoService;
 import com.webbdong.springboot.aop.util.JSONUtils;
@@ -31,6 +32,12 @@ public class AopTestController {
     @SneakyThrows
     public Object test2(@RequestBody TestRequest request) {
         return JSONUtils.toJSON(request);
+    }
+
+    @RequestMapping("/test3")
+    @MyAnnotation(param1 = 1000)
+    public Object test3() {
+        return "success";
     }
 
 }

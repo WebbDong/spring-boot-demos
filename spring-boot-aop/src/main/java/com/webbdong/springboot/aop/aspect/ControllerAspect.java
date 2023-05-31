@@ -17,8 +17,10 @@ public class ControllerAspect {
     @Around("execution(public * com.webbdong.springboot.aop.controller..*.*(..))")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] args = joinPoint.getArgs();
-        CommonRequest request = (CommonRequest) args[0];
-        request.setUserID(1000L);
+        if (args.length != 0) {
+            CommonRequest request = (CommonRequest) args[0];
+            request.setUserID(1000L);
+        }
         return joinPoint.proceed();
     }
 
