@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = false;
+// 生成java类所在包
+option java_package = "com.webbdong.springboot.grpc";
+
+package protobuf;
+
+service TestService {
+  rpc get_msg (MsgRequest) returns (MsgResponse) {}
+}
+
+message MsgRequest {
+  string name = 1;
+}
+
+message MsgResponse {
+  string msg = 1;
+}

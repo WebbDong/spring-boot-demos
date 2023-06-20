@@ -1,0 +1,5 @@
+grpc:
+  client:
+    testServiceClient:
+      negotiation-type: PLAINTEXT
+      address: static://localhost:9090

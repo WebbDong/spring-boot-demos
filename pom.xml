@@ -46,6 +46,9 @@
         <spring-boot-starter-data-mongodb.version>2.5.6</spring-boot-starter-data-mongodb.version>
         <slf4j.version>1.7.32</slf4j.version>
         <logback.version>1.2.10</logback.version>
+        <protobuf.version>3.23.2</protobuf.version>
+        <grpc.version>1.51.0</grpc.version>
+        <grpc-spring-boot.version>2.14.0.RELEASE</grpc-spring-boot.version>
     </properties>
 
     <modules>
@@ -72,6 +75,7 @@
         <module>spring-boot-dynamic-scheduling</module>
         <module>spring-boot-spel</module>
         <module>spring-boot-neo4j</module>
+        <module>spring-boot-grpc</module>
     </modules>
 
     <dependencies>
@@ -264,6 +268,34 @@
                 <artifactId>logback-access</artifactId>
                 <version>${logback.version}</version>
             </dependency>
+            <!-- GRPC Server + Client，如果同时需要客户端和服务端只需要引入此依赖 -->
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-spring-boot-starter</artifactId>
+                <version>${grpc-spring-boot.version}</version>
+            </dependency>
+            <!-- GRPC Client 只需要客户端时引入此依赖 -->
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-client-spring-boot-starter</artifactId>
+                <version>${grpc-spring-boot.version}</version>
+            </dependency>
+            <!-- GRPC Server 只需要服务端时引入此依赖 -->
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-server-spring-boot-starter</artifactId>
+                <version>${grpc-spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java-util</artifactId>
+                <version>${protobuf.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -328,6 +360,17 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot-maven-plugin.version}</version>
+                </plugin>
+                <!-- protobuf/grpc编译插件 -->
+                <plugin>
+                    <groupId>org.xolstice.maven.plugins</groupId>
+                    <artifactId>protobuf-maven-plugin</artifactId>
+                    <version>0.6.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>kr.motd.maven</groupId>
+                    <artifactId>os-maven-plugin</artifactId>
+                    <version>1.7.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
