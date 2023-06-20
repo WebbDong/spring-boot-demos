@@ -571,12 +571,36 @@ public final class Test {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string msg = 1;</code>
+     * <code>string code = 1;</code>
+     * @return The code.
+     */
+    java.lang.String getCode();
+    /**
+     * <code>string code = 1;</code>
+     * @return The bytes for code.
+     */
+    com.google.protobuf.ByteString
+        getCodeBytes();
+
+    /**
+     * <code>string data = 2;</code>
+     * @return The data.
+     */
+    java.lang.String getData();
+    /**
+     * <code>string data = 2;</code>
+     * @return The bytes for data.
+     */
+    com.google.protobuf.ByteString
+        getDataBytes();
+
+    /**
+     * <code>string msg = 3;</code>
      * @return The msg.
      */
     java.lang.String getMsg();
     /**
-     * <code>string msg = 1;</code>
+     * <code>string msg = 3;</code>
      * @return The bytes for msg.
      */
     com.google.protobuf.ByteString
@@ -595,6 +619,8 @@ public final class Test {
       super(builder);
     }
     private MsgResponse() {
+      code_ = "";
+      data_ = "";
       msg_ = "";
     }
 
@@ -618,11 +644,89 @@ public final class Test {
               com.webbdong.springboot.grpc.Test.MsgResponse.class, com.webbdong.springboot.grpc.Test.MsgResponse.Builder.class);
     }
 
-    public static final int MSG_FIELD_NUMBER = 1;
+    public static final int CODE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object code_ = "";
+    /**
+     * <code>string code = 1;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public java.lang.String getCode() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        code_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string code = 1;</code>
+     * @return The bytes for code.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCodeBytes() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        code_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DATA_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object data_ = "";
+    /**
+     * <code>string data = 2;</code>
+     * @return The data.
+     */
+    @java.lang.Override
+    public java.lang.String getData() {
+      java.lang.Object ref = data_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        data_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string data = 2;</code>
+     * @return The bytes for data.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDataBytes() {
+      java.lang.Object ref = data_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        data_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MSG_FIELD_NUMBER = 3;
     @SuppressWarnings("serial")
     private volatile java.lang.Object msg_ = "";
     /**
-     * <code>string msg = 1;</code>
+     * <code>string msg = 3;</code>
      * @return The msg.
      */
     @java.lang.Override
@@ -639,7 +743,7 @@ public final class Test {
       }
     }
     /**
-     * <code>string msg = 1;</code>
+     * <code>string msg = 3;</code>
      * @return The bytes for msg.
      */
     @java.lang.Override
@@ -671,8 +775,14 @@ public final class Test {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(code_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, code_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(data_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, data_);
+      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msg_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, msg_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, msg_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -683,8 +793,14 @@ public final class Test {
       if (size != -1) return size;
 
       size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(code_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, code_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(data_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, data_);
+      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msg_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, msg_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, msg_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -701,6 +817,10 @@ public final class Test {
       }
       com.webbdong.springboot.grpc.Test.MsgResponse other = (com.webbdong.springboot.grpc.Test.MsgResponse) obj;
 
+      if (!getCode()
+          .equals(other.getCode())) return false;
+      if (!getData()
+          .equals(other.getData())) return false;
       if (!getMsg()
           .equals(other.getMsg())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -714,6 +834,10 @@ public final class Test {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode().hashCode();
+      hash = (37 * hash) + DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getData().hashCode();
       hash = (37 * hash) + MSG_FIELD_NUMBER;
       hash = (53 * hash) + getMsg().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
@@ -847,6 +971,8 @@ public final class Test {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
+        code_ = "";
+        data_ = "";
         msg_ = "";
         return this;
       }
@@ -882,6 +1008,12 @@ public final class Test {
       private void buildPartial0(com.webbdong.springboot.grpc.Test.MsgResponse result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.code_ = code_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.data_ = data_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           result.msg_ = msg_;
         }
       }
@@ -930,9 +1062,19 @@ public final class Test {
 
       public Builder mergeFrom(com.webbdong.springboot.grpc.Test.MsgResponse other) {
         if (other == com.webbdong.springboot.grpc.Test.MsgResponse.getDefaultInstance()) return this;
+        if (!other.getCode().isEmpty()) {
+          code_ = other.code_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getData().isEmpty()) {
+          data_ = other.data_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
         if (!other.getMsg().isEmpty()) {
           msg_ = other.msg_;
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -962,10 +1104,20 @@ public final class Test {
                 done = true;
                 break;
               case 10: {
-                msg_ = input.readStringRequireUtf8();
+                code_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
+              case 18: {
+                data_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                msg_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -983,9 +1135,153 @@ public final class Test {
       }
       private int bitField0_;
 
+      private java.lang.Object code_ = "";
+      /**
+       * <code>string code = 1;</code>
+       * @return The code.
+       */
+      public java.lang.String getCode() {
+        java.lang.Object ref = code_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          code_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string code = 1;</code>
+       * @return The bytes for code.
+       */
+      public com.google.protobuf.ByteString
+          getCodeBytes() {
+        java.lang.Object ref = code_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          code_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string code = 1;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        code_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        code_ = getDefaultInstance().getCode();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string code = 1;</code>
+       * @param value The bytes for code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        code_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object data_ = "";
+      /**
+       * <code>string data = 2;</code>
+       * @return The data.
+       */
+      public java.lang.String getData() {
+        java.lang.Object ref = data_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          data_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string data = 2;</code>
+       * @return The bytes for data.
+       */
+      public com.google.protobuf.ByteString
+          getDataBytes() {
+        java.lang.Object ref = data_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          data_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string data = 2;</code>
+       * @param value The data to set.
+       * @return This builder for chaining.
+       */
+      public Builder setData(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        data_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string data = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearData() {
+        data_ = getDefaultInstance().getData();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string data = 2;</code>
+       * @param value The bytes for data to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDataBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        data_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object msg_ = "";
       /**
-       * <code>string msg = 1;</code>
+       * <code>string msg = 3;</code>
        * @return The msg.
        */
       public java.lang.String getMsg() {
@@ -1001,7 +1297,7 @@ public final class Test {
         }
       }
       /**
-       * <code>string msg = 1;</code>
+       * <code>string msg = 3;</code>
        * @return The bytes for msg.
        */
       public com.google.protobuf.ByteString
@@ -1018,7 +1314,7 @@ public final class Test {
         }
       }
       /**
-       * <code>string msg = 1;</code>
+       * <code>string msg = 3;</code>
        * @param value The msg to set.
        * @return This builder for chaining.
        */
@@ -1026,22 +1322,22 @@ public final class Test {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         msg_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       /**
-       * <code>string msg = 1;</code>
+       * <code>string msg = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearMsg() {
         msg_ = getDefaultInstance().getMsg();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
-       * <code>string msg = 1;</code>
+       * <code>string msg = 3;</code>
        * @param value The bytes for msg to set.
        * @return This builder for chaining.
        */
@@ -1050,7 +1346,7 @@ public final class Test {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         msg_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1138,10 +1434,17 @@ public final class Test {
   static {
     java.lang.String[] descriptorData = {
       "\n\nTest.proto\022\010protobuf\"\032\n\nMsgRequest\022\014\n\004" +
-      "name\030\001 \001(\t\"\032\n\013MsgResponse\022\013\n\003msg\030\001 \001(\t2G" +
-      "\n\013TestService\0228\n\007get_msg\022\024.protobuf.MsgR" +
-      "equest\032\025.protobuf.MsgResponse\"\000B \n\034com.w" +
-      "ebbdong.springboot.grpcP\000b\006proto3"
+      "name\030\001 \001(\t\"6\n\013MsgResponse\022\014\n\004code\030\001 \001(\t\022" +
+      "\014\n\004data\030\002 \001(\t\022\013\n\003msg\030\003 \001(\t2\250\002\n\013TestServi" +
+      "ce\0228\n\007get_msg\022\024.protobuf.MsgRequest\032\025.pr" +
+      "otobuf.MsgResponse\"\000\022H\n\025get_msg_server_s" +
+      "tream\022\024.protobuf.MsgRequest\032\025.protobuf.M" +
+      "sgResponse\"\0000\001\022H\n\025get_msg_client_stream\022" +
+      "\024.protobuf.MsgRequest\032\025.protobuf.MsgResp" +
+      "onse\"\000(\001\022K\n\026get_msg_two_way_stream\022\024.pro" +
+      "tobuf.MsgRequest\032\025.protobuf.MsgResponse\"" +
+      "\000(\0010\001B \n\034com.webbdong.springboot.grpcP\000b" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1158,7 +1461,7 @@ public final class Test {
     internal_static_protobuf_MsgResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_MsgResponse_descriptor,
-        new java.lang.String[] { "Msg", });
+        new java.lang.String[] { "Code", "Data", "Msg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

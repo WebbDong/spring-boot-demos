@@ -7,7 +7,14 @@ option java_package = "com.webbdong.springboot.grpc";
 package protobuf;
 
 service TestService {
+  // 简单一次性GRPC调用
   rpc get_msg (MsgRequest) returns (MsgResponse) {}
+  // 服务端流
+  rpc get_msg_server_stream (MsgRequest) returns (stream MsgResponse) {}
+  // 客户端流
+  rpc get_msg_client_stream (stream MsgRequest) returns (MsgResponse) {}
+  // 双向流
+  rpc get_msg_two_way_stream (stream MsgRequest) returns (stream MsgResponse) {}
 }
 
 message MsgRequest {
@@ -15,5 +22,7 @@ message MsgRequest {
 }
 
 message MsgResponse {
-  string msg = 1;
+  string code = 1;
+  string data = 2;
+  string msg = 3;
 }
