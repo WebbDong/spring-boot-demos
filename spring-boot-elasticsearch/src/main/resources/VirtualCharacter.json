@@ -1,0 +1,60 @@
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id":  {
+        "type": "long"
+      },
+      "siyaId": {
+        "type": "text"
+      },
+      "gender": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "text"
+      },
+      "tag": {
+        "type": "text"
+      },
+      "createTime": {
+        "type": "date"
+      },
+      "updateTime": {
+        "type": "date"
+      },
+      "roleType": {
+        "type": "integer"
+      },
+      "roleDesc": {
+        "type": "text"
+      },
+      "sunSign": {
+        "type": "integer"
+      },
+      "moonSign": {
+        "type": "integer"
+      },
+      "ascendant": {
+        "type": "integer"
+      },
+      "mbti": {
+        "type": "text"
+      },
+      "languageStyle": {
+        "type": "text"
+      },
+      "temperature": {
+        "type": "keyword"
+      },
+      "interactiveLanguage": {
+        "type": "keyword"
+      }
+    }
+  }
+}

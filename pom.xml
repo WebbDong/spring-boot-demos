@@ -70,12 +70,12 @@
         <module>spring-boot-redis-cache</module>
         <module>spring-boot-redis-repository</module>
         <module>spring-boot-security-jwt-oauth2</module>
-        <module>spring-boot-es</module>
         <module>spring-boot-mongodb</module>
         <module>spring-boot-dynamic-scheduling</module>
         <module>spring-boot-spel</module>
         <module>spring-boot-neo4j</module>
         <module>spring-boot-grpc</module>
+        <module>spring-boot-elasticsearch</module>
     </modules>
 
     <dependencies>
