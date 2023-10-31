@@ -3,6 +3,7 @@ package com.webbdong.elasticsearch;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 /**
  * @author WebbDong
@@ -10,6 +11,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  */
 @SpringBootApplication
 @ServletComponentScan
+@EnableElasticsearchRepositories(basePackages = "com.webbdong.elasticsearch")
 public class App {
 
     public static void main(String[] args) {

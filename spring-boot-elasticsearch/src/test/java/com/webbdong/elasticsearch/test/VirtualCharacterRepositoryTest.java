@@ -74,4 +74,8 @@ public class VirtualCharacterRepositoryTest {
         }
     }
 
+    @Test
+    public void test() {
+    }
+
 }

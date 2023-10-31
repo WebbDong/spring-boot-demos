@@ -3,4 +3,4 @@ server:
 spring:
   elasticsearch:
     rest:
-      uris: 192.168.0.104:9200
+      uris: 47.100.111.131:9200
